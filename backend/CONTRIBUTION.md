@@ -18,7 +18,7 @@ Alle arbejder i **samme Git repository**, som ligger i projektets root.
 1. Klon repository:
 
 ```
-git clone https://github.com/emilTejnRasmussen/TS-SEP1-A25-Projekt.git
+git clone https://github.com/emilTejnRasmussen/TS-SEP2-S26-Projekt.git
 ```
 
 2. Gå ind i projektmappen:
