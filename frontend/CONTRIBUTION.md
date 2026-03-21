@@ -6,7 +6,6 @@ Projektet består af følgende mapper:
 
 * `backend/` → Java backend (IntelliJ)
 * `frontend/` → Web frontend
-* `db/` → Database scripts
 * `docs/` → Dokumentation
 
 Alle arbejder i **samme Git repository**, som ligger i projektets root.
@@ -18,13 +17,13 @@ Alle arbejder i **samme Git repository**, som ligger i projektets root.
 1. Klon repository:
 
 ```
-git clone https://github.com/emilTejnRasmussen/TS-SEP1-A25-Projekt.git
+git clone https://github.com/emilTejnRasmussen/TS-SEP2-S26-Projekt.git
 ```
 
 2. Gå ind i projektmappen:
 
 ```
-cd TS-SEP1-A25-Projekt
+cd TS-SEP2-S26-Projekt
 ```
 
 3. Åbn projektet i din IDE:
