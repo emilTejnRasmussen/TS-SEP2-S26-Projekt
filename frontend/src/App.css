@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-blue: #212e40;
+    --medium-blue: #2f3c4f;
+    --light-blue: #485669;
+    --contrast-color: #c39557;
+    --off-white: #e4e4e4;
+    --super-light-blue: #acbfde;
+
+    /*  Variabler vi skal bruger nedenunder  */
+    --accent-bg: var(--dark-blue);
+    --accent-text: var(--off-white);
+    --bg: var(--medium-blue);
+    --text-color: var(--off-white);
+    --button-border: var(--light-blue);
+    --button-face: var(--light-blue);
+    --button-face-hover: var(--super-light-blue);
+    --button-text: var(--off-white);
+    --canvas-primary: var(--c-cluedo-brown);
+    --canvas-highlight: var(--c-cluedo-dark-brown);
+    --canvas-text: var(--c-light-text);
+    --link-active-text: ;
+    --link-text: var(--super-light-blue);
+    --link-hover-text: ;
+    --input-bg: var(--c-light-ghostwhite);
+    --input-border: var(--c-light-periwrinkle);
+    --succes: var(--c-light-tiffanyblue);
+    --danger: var(--c-light-brightpink);
+    --transparent: hsl(0, 0%, 0%, 0%);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    color: var(--link-text);
+}

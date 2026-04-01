@@ -1,0 +1,11 @@
+.menu-wrapper-open {
+    background-color: var(--accent-bg);
+    width: clamp(10px, 70%, 400px);
+    height: 100vh;
+}
+
+.menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
