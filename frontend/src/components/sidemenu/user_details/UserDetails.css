@@ -1,0 +1,11 @@
+.user-details-wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 2rem;
+
+    color: var(--text-color);
+
+}
