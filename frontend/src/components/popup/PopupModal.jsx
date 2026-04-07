@@ -32,7 +32,7 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
                     </button>
                 </form>
 
-                <p>
+                <p className="popup-Text-bottom">
                     {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
                     <span
                         className="switch-mode"

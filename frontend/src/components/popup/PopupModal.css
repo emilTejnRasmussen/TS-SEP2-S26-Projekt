@@ -20,7 +20,7 @@
   border-radius: 12px;
   width: 400px;
   max-width: 90%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
   text-align: center;
 }
 
@@ -54,6 +54,7 @@
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .submit-btn {
@@ -61,8 +62,9 @@
   font-size: 16px;
   border: none;
   border-radius: 8px;
-  background: black;
-  color: white;
+  background: linear-gradient(90deg, rgb(42 125 155) 0%, rgba(87, 199, 133, 1) 50%, rgb(237 229 83) 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
   cursor: pointer;
   margin-bottom: 10px;
 }
@@ -72,7 +74,12 @@
 }
 
 .switch-mode {
-  color: blue;
+  color: lightgreen;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.popup-Text-bottom
+{
+  color : #ffffff;
 }
