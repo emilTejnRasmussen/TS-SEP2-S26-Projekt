@@ -1,0 +1,104 @@
+.auth-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0 0 0 / 0.5);
+  z-index: 1000;
+}
+
+.auth-modal {
+  position: relative;
+  height: clamp(500px, 550px, 750px);
+  background-color: var(--accent-bg);
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-modal h2 {
+  color: var(--accent-text);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: none;
+  color: var(--accent-text);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.form-top {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-bottom {
+  margin-top: auto;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  background-color: var(--bg);
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.auth-form input::placeholder {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.auth-form input:focus {
+  outline: 2px solid var(--button-face-hover);
+  outline-offset: 2px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--button-face);
+  color: var(--button-text);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--button-face-hover);
+}
+
+.switch-mode {
+  color: var(--link-text);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.switch-mode:hover {
+  color: var(--link-hover-text, var(--link-text));
+}

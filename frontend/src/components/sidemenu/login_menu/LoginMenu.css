@@ -13,10 +13,13 @@
     color: var(--button-text);
     border-radius: 10px;
     border-color: var(--button-border);
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
 
 .register-link {
     text-decoration: underline;
     text-align: center;
+    cursor: pointer;
 }

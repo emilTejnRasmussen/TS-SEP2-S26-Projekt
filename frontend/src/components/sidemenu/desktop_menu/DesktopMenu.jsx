@@ -3,15 +3,9 @@ import "./DesktopMenu.css"
 import {UserDetails} from "../user_details/UserDetails.jsx";
 import {LoginMenu} from "../login_menu/LoginMenu.jsx";
 
-export function DesktopMenu() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true)
+export function DesktopMenu({openLoginModal, openRegisterModal}) {
+    const [isLoggedIn, setIsLoggedIn] = useState(false  )
     const [isMenuOpened, setIsMenuOpened] = useState(false)
-
-    const toggleMenu = () => {
-        setIsOpen(!isOpen)
-    }
-
-
 
     return (
         <div className="desktop-menu-wrapper"
@@ -22,7 +16,10 @@ export function DesktopMenu() {
             }
 
             {!isLoggedIn && isMenuOpened &&
-                <LoginMenu />
+                <LoginMenu
+                    onOpenLoginModal={openLoginModal}
+                    onOpenRegisterModal={openRegisterModal}
+                />
             }
         </div>
     )
