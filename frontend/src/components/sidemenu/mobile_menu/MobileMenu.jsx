@@ -5,7 +5,7 @@ import {LoginMenu} from "../login_menu/LoginMenu.jsx";
 import "./MobileMenu.css"
 import {UserDetails} from "../user_details/UserDetails.jsx";
 
-export function MobileMenu() {
+export function MobileMenu({openLoginModal, openRegisterModal}) {
     const [isOpen, setIsOpen] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -13,11 +13,8 @@ export function MobileMenu() {
         setIsOpen(!isOpen)
     }
 
-
-
     return (
         <div className={`menu-wrapper ${isOpen && "menu-wrapper-open"}`}>
-
             <BurgerButton isOpen={isOpen} toggleMenu={toggleMenu}/>
 
             {isOpen && isLoggedIn &&
@@ -25,7 +22,11 @@ export function MobileMenu() {
             }
 
             {isOpen && !isLoggedIn &&
-                <LoginMenu />
+                <LoginMenu
+                    toggleMenu={toggleMenu}
+                    onOpenLoginModal={openLoginModal}
+                    onOpenRegisterModal={openRegisterModal}
+                />
             }
         </div>
     )
