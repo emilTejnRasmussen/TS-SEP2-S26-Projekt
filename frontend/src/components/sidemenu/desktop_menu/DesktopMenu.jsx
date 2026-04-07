@@ -5,6 +5,7 @@ import {LoginMenu} from "../login_menu/LoginMenu.jsx";
 
 export function DesktopMenu() {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const [isMenuOpened, setIsMenuOpened] = useState(false)
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
@@ -13,12 +14,14 @@ export function DesktopMenu() {
 
 
     return (
-        <div className="desktop-menu-wrapper">
+        <div className="desktop-menu-wrapper"
+        onMouseEnter={() => setIsMenuOpened(true)}
+        onMouseLeave={() => setIsMenuOpened(false)}>
             {isLoggedIn &&
-                <UserDetails username={"username"}/>
+                <UserDetails username={"username"} isMenuOpened={isMenuOpened}/>
             }
 
-            {!isLoggedIn &&
+            {!isLoggedIn && isMenuOpened &&
                 <LoginMenu />
             }
         </div>
