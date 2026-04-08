@@ -1,5 +1,5 @@
 import {BurgerButton} from "../burger_button/BurgerButton.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {LoginMenu} from "../login_menu/LoginMenu.jsx";
 
 import "./MobileMenu.css"
@@ -8,6 +8,14 @@ import {UserDetails} from "../user_details/UserDetails.jsx";
 export function MobileMenu({openLoginModal, openRegisterModal}) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+
+    useEffect(() => {
+        const userId = localStorage.getItem("userId");
+
+        if (userId) {
+            setIsLoggedIn(true);
+        }
+    }, []);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)

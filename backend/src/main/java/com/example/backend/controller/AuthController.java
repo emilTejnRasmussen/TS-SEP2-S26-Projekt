@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.business.dto.auth.LoginRequest;
 import com.example.backend.business.dto.auth.RegisterUserRequest;
 import com.example.backend.entity.User;
 import com.example.backend.business.service.AuthService;
@@ -23,6 +24,12 @@ public class AuthController
     @PostMapping("/register")
     public User registerUser(@Valid @RequestBody RegisterUserRequest request) {
         return authService.registerUser(request);
+    }
+
+    @PostMapping("/login")
+    public User login(@Valid @RequestBody LoginRequest request)
+    {
+        return authService.login(request);
     }
 
 }
