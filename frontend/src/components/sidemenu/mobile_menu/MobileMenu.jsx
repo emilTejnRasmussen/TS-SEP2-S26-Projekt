@@ -6,8 +6,8 @@ import "./MobileMenu.css"
 import {UserDetails} from "../user_details/UserDetails.jsx";
 
 export function MobileMenu({openLoginModal, openRegisterModal}) {
-    const [isOpen, setIsOpen] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
@@ -18,7 +18,7 @@ export function MobileMenu({openLoginModal, openRegisterModal}) {
             <BurgerButton isOpen={isOpen} toggleMenu={toggleMenu}/>
 
             {isOpen && isLoggedIn &&
-                <UserDetails username={"username"}/>
+                <UserDetails username={"username"} />
             }
 
             {isOpen && !isLoggedIn &&

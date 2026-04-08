@@ -1,6 +1,6 @@
 import "./PopupModal.css";
 
-export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
+export function PopupModal({isOpen, onClose, isLogin, setIsLogin}) {
     const closeMenu = () => {
         setIsLogin(true);
         onClose();
@@ -21,15 +21,19 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
                 <h2>{isLogin ? "Login" : "Create Account"}</h2>
 
                 <form className="auth-form">
-                    {!isLogin && (
-                        <input type="text" placeholder="Username" />
-                    )}
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+                    <div className="form-top">
+                        {!isLogin && (
+                            <input type="text" placeholder="Username"/>
+                        )}
+                        <input type="email" placeholder="Email"/>
+                        <input type="password" placeholder="Password"/>
+                    </div>
 
-                    <button type="submit" className="submit-btn">
-                        {isLogin ? "Login" : "Create Account"}
-                    </button>
+                    <div className="form-bottom">
+                        <button type="submit" className="submit-btn">
+                            {isLogin ? "Login" : "Create Account"}
+                        </button>
+                    </div>
                 </form>
 
                 <p>

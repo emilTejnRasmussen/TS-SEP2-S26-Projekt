@@ -16,22 +16,30 @@ function App() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    const openInLoginMode = () => {
+        setIsLoginModalOpen(true);
+        setShowPopup(true);
+    }
+
+    const openInRegisterMode = () => {
+        setIsLoginModalOpen(false);
+        setShowPopup(true);
+    }
+
+
     return (
         <>
             <div className={isMobile ? "mobile-layout" : "desktop-layout"}>
                 {isMobile ? (
                     <MobileMenu
-                        openLoginModal={() => {
-                            setIsLoginModalOpen(true);
-                            setShowPopup(true);
-                        }}
-                        openRegisterModal={() => {
-                            setIsLoginModalOpen(false);
-                            setShowPopup(true);
-                        }}
+                        openLoginModal={openInLoginMode}
+                        openRegisterModal={openInRegisterMode}
                     />
                 ) : (
-                    <DesktopMenu />
+                    <DesktopMenu
+                        openLoginModal={openInLoginMode}
+                        openRegisterModal={openInRegisterMode}
+                    />
                 )}
             </div>
 

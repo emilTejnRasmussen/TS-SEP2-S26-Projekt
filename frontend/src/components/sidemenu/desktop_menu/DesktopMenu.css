@@ -1,9 +1,9 @@
 .desktop-menu-wrapper {
-    width: 80px;
+    width: 5rem;
     height: 100vh;
     background-color: var(--bg);
 }
 
 .desktop-menu-wrapper:hover {
-    width: 220px;
+    width: 15rem;
 }
