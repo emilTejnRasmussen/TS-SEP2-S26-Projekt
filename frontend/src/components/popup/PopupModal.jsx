@@ -21,22 +21,22 @@ export function PopupModal({isOpen, onClose, isLogin, setIsLogin}) {
                 <h2>{isLogin ? "Login" : "Create Account"}</h2>
 
                 <form className="auth-form">
-                    <div className="form-top">
+
                         {!isLogin && (
                             <input type="text" placeholder="Username"/>
                         )}
                         <input type="email" placeholder="Email"/>
                         <input type="password" placeholder="Password"/>
-                    </div>
 
-                    <div className="form-bottom">
+
+
                         <button type="submit" className="submit-btn">
                             {isLogin ? "Login" : "Create Account"}
                         </button>
-                    </div>
+
                 </form>
 
-                <p>
+                <p className="popup-text-bottom">
                     {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
                     <span
                         className="switch-mode"
