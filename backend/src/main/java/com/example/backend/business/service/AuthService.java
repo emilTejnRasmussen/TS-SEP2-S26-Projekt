@@ -6,6 +6,7 @@ import com.example.backend.business.dto.mapper.UserMapper;
 import com.example.backend.business.dto.user.UserResponse;
 import com.example.backend.entity.User;
 import com.example.backend.persistence.repository.UserRepository;
+import com.example.backend.shared.exception.ConflictException;
 import com.example.backend.shared.exception.InvalidCredentialsException;
 import com.example.backend.shared.util.PasswordHasher;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,18 @@ public class AuthService
 
     public UserResponse registerUser(RegisterUserRequest request)
     {
+        boolean usernameExist = userRepository.existsByUsername(request.username());
+        boolean emailExist = userRepository.existsByEmail(request.email());
+
+        if (usernameExist && emailExist)
+            throw new ConflictException("Username and email already exists");
+
+        if (userRepository.existsByUsername(request.username()))
+            throw new ConflictException("Username already exists");
+
+        if (userRepository.existsByEmail(request.email()))
+            throw new ConflictException("Email already exists");
+
         User newUser = new User();
         newUser.setUsername(request.username());
         newUser.setEmail(request.email());
