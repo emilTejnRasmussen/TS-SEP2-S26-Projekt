@@ -16,14 +16,17 @@ export async function api(path, options = {}) {
         : await response.text();
 
     if (!response.ok) {
-        console.log("API error status:", response.status);
-        console.log("API error body:", data);
-
-        throw new Error(
-            typeof data === "string"
-                ? data
-                : data?.message || JSON.stringify(data) || `Request failed with status ${response.status}`
-        );
+        throw {
+            status: response.status,
+            message:
+                typeof data === "string"
+                    ? data
+                    : data?.message || `Request failed with status ${response.status}`,
+            error: typeof data === "object" ? data?.error : null,
+            fieldErrors: typeof data === "object" ? data?.fieldErrors : null,
+            field: typeof data === "object" ? data?.field : null,
+            timeStamp: typeof data === "object" ? data?.timeStamp : null,
+        };
     }
 
     return data;

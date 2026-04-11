@@ -30,7 +30,7 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin, onSubmit }) {
                     closeMenu();
                 })
                 .catch((err) => {
-                    console.error("login failed", err);
+                    alert("[" + err.status + "] " + err.message)
                 });
         } else {
             register(username, password, email)
@@ -41,7 +41,7 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin, onSubmit }) {
                     closeMenu();
                 })
                 .catch((err) => {
-                    console.error("register failed", err);
+                    alert("[" + err.status + "] " + err.message)
                 });
         }
     };
@@ -63,6 +63,9 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin, onSubmit }) {
                         placeholder="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        pattern="^.{5,30}$"
+                        title="Username must be between 5 and 30 characters"
+                        required
                     />
 
                     {!isLogin && (
@@ -71,6 +74,7 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin, onSubmit }) {
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
                     )}
 
@@ -79,6 +83,9 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin, onSubmit }) {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        pattern="^.{5,50}$"
+                        title="Username must be between 5 and 50 characters"
+                        required
                     />
 
                     <button type="submit" className="submit-btn">

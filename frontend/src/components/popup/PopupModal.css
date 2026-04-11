@@ -83,3 +83,10 @@
 {
   color : #ffffff;
 }
+
+input:user-valid{
+  outline: 3px solid #24fc7e;
+}
+input:user-invalid{
+  outline: 3px solid #dd5e37;
+}
