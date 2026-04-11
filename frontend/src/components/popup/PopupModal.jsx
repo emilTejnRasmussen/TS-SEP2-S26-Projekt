@@ -2,7 +2,7 @@ import "./PopupModal.css";
 import { useState } from "react";
 import { login, register } from "../../api/authApi.js";
 
-export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
+export function PopupModal({ isOpen, onClose, isLogin, setIsLogin, onSubmit }) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,6 +12,12 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
         onClose();
     };
 
+    const clearInputFields = () => {
+        setUsername("")
+        setEmail("")
+        setPassword("")
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -19,6 +25,8 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
             login(username, password)
                 .then((res) => {
                     console.log("login success", res);
+                    onSubmit()
+                    clearInputFields()
                     closeMenu();
                 })
                 .catch((err) => {
@@ -28,6 +36,8 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
             register(username, password, email)
                 .then((res) => {
                     console.log("register success", res);
+                    onSubmit()
+                    clearInputFields()
                     closeMenu();
                 })
                 .catch((err) => {
