@@ -6,7 +6,12 @@ export function register(username, password, email) {
         body: { username, password, email }
     }).then((data) => {
         if (data?.id != null) {
-            localStorage.setItem("userId", String(data.id));
+            const userDetails = {
+                id: data.id,
+                username: data.username,
+                email: data.email
+            }
+            localStorage.setItem("userDetails", JSON.stringify(userDetails));
         }
         return data;
     });
@@ -18,7 +23,12 @@ export function login(username, password) {
         body: { username, password }
     }).then((data) => {
         if (data?.id != null) {
-            localStorage.setItem("userId", String(data.id));
+            const userDetails = {
+                id: data.id,
+                username: data.username,
+                email: data.email
+            }
+            localStorage.setItem("userDetails", JSON.stringify(userDetails));
         }
         return data;
     });

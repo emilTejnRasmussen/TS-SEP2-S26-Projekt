@@ -1,21 +1,13 @@
-import {BurgerButton} from "../burger_button/BurgerButton.jsx";
-import {useEffect, useState} from "react";
-import {LoginMenu} from "../login_menu/LoginMenu.jsx";
-
 import "./MobileMenu.css"
+import {useState} from "react";
+
+import {LoginMenu} from "../login_menu/LoginMenu.jsx";
+import {BurgerButton} from "../burger_button/BurgerButton.jsx";
 import {UserDetails} from "../user_details/UserDetails.jsx";
+import {LogoutButton} from "../logout_button/LogoutButton.jsx";
 
-export function MobileMenu({openLoginModal, openRegisterModal}) {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+export function MobileMenu({openLoginModal, openRegisterModal, isLoggedIn, checkLoginStatus}) {
     const [isOpen, setIsOpen] = useState(false)
-
-    useEffect(() => {
-        const userId = localStorage.getItem("userId");
-
-        if (userId) {
-            setIsLoggedIn(true);
-        }
-    }, []);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
@@ -34,6 +26,15 @@ export function MobileMenu({openLoginModal, openRegisterModal}) {
                     toggleMenu={toggleMenu}
                     onOpenLoginModal={openLoginModal}
                     onOpenRegisterModal={openRegisterModal}
+                    onLogin={checkLoginStatus}
+                />
+            }
+
+            {isOpen && isLoggedIn &&
+                <LogoutButton
+                    onLogout={checkLoginStatus}
+                    isOpen={true}
+                    isDesktop={false}
                 />
             }
         </div>

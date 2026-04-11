@@ -10,9 +10,12 @@
     --dark-blue: #212e40;
     --medium-blue: #2f3c4f;
     --light-blue: #485669;
+    --light-gray: #6d6767;
     --contrast-color: #c39557;
     --off-white: #e4e4e4;
     --super-light-blue: #acbfde;
+    --off-red: #f66969;
+    --light-red: #f77f7f;
 
     /*  Variabler vi skal bruger nedenunder  */
     --accent-bg: var(--dark-blue);
@@ -32,8 +35,11 @@
     --input-bg: var(--c-light-ghostwhite);
     --input-border: var(--c-light-periwrinkle);
     --succes: var(--c-light-tiffanyblue);
-    --danger: var(--c-light-brightpink);
+    --danger: var(--off-red);
     --transparent: hsl(0, 0%, 0%, 0%);
+    --logout-btn: var(--off-red);
+    --logout-btn-hover: var(--light-red);
+    --logout-btn-text: var(--light-gray)
 }
 
 body {

@@ -9,6 +9,13 @@ function App() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [showPopup, setShowPopup] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
+        return !!localStorage.getItem("userDetails")
+    })
+
+    const checkLoginStatus = () => {
+        setIsLoggedIn(!!localStorage.getItem("userDetails"))
+    }
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -34,11 +41,15 @@ function App() {
                     <MobileMenu
                         openLoginModal={openInLoginMode}
                         openRegisterModal={openInRegisterMode}
+                        isLoggedIn={isLoggedIn}
+                        checkLoginStatus={checkLoginStatus}
                     />
                 ) : (
                     <DesktopMenu
                         openLoginModal={openInLoginMode}
                         openRegisterModal={openInRegisterMode}
+                        isLoggedIn={isLoggedIn}
+                        checkLoginStatus={checkLoginStatus}
                     />
                 )}
             </div>
@@ -47,7 +58,9 @@ function App() {
                 isOpen={showPopup}
                 isLogin={isLoginModalOpen}
                 setIsLogin={setIsLoginModalOpen}
-                onClose={() => setShowPopup(false)}
+                onSubmit={checkLoginStatus}
+                onClose={() => setShowPopup(false)
+            }
             />
         </>
     );

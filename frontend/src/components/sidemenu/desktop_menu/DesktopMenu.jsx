@@ -1,19 +1,11 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import "./DesktopMenu.css"
 import {UserDetails} from "../user_details/UserDetails.jsx";
 import {LoginMenu} from "../login_menu/LoginMenu.jsx";
+import {LogoutButton} from "../logout_button/LogoutButton.jsx";
 
-export function DesktopMenu({openLoginModal, openRegisterModal}) {
-    const [isLoggedIn, setIsLoggedIn] = useState(false  )
+export function DesktopMenu({openLoginModal, openRegisterModal, isLoggedIn, checkLoginStatus}) {
     const [isMenuOpened, setIsMenuOpened] = useState(false)
-
-    useEffect(() => {
-        const userId = localStorage.getItem("userId");
-
-        if (userId) {
-            setIsLoggedIn(true);
-        }
-    }, []);
 
     return (
         <div className="desktop-menu-wrapper"
@@ -27,6 +19,14 @@ export function DesktopMenu({openLoginModal, openRegisterModal}) {
                 <LoginMenu
                     onOpenLoginModal={openLoginModal}
                     onOpenRegisterModal={openRegisterModal}
+                />
+            }
+
+            {isLoggedIn &&
+                <LogoutButton
+                    onLogout={checkLoginStatus}
+                    isOpen={isMenuOpened}
+                    isDesktop={true}
                 />
             }
         </div>

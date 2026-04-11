@@ -2,7 +2,7 @@ import "./PopupModal.css";
 import { useState } from "react";
 import { login, register } from "../../api/authApi.js";
 
-export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
+export function PopupModal({ isOpen, onClose, isLogin, setIsLogin, onSubmit }) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -12,6 +12,12 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
         onClose();
     };
 
+    const clearInputFields = () => {
+        setUsername("")
+        setEmail("")
+        setPassword("")
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -19,19 +25,23 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
             login(username, password)
                 .then((res) => {
                     console.log("login success", res);
+                    onSubmit()
+                    clearInputFields()
                     closeMenu();
                 })
                 .catch((err) => {
-                    console.error("login failed", err);
+                    alert("[" + err.status + "] " + err.message)
                 });
         } else {
             register(username, password, email)
                 .then((res) => {
                     console.log("register success", res);
+                    onSubmit()
+                    clearInputFields()
                     closeMenu();
                 })
                 .catch((err) => {
-                    console.error("register failed", err);
+                    alert("[" + err.status + "] " + err.message)
                 });
         }
     };
@@ -53,6 +63,9 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
                         placeholder="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        pattern="^.{5,30}$"
+                        title="Username must be between 5 and 30 characters"
+                        required
                     />
 
                     {!isLogin && (
@@ -61,6 +74,7 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
                     )}
 
@@ -69,6 +83,9 @@ export function PopupModal({ isOpen, onClose, isLogin, setIsLogin }) {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        pattern="^.{5,50}$"
+                        title="Username must be between 5 and 50 characters"
+                        required
                     />
 
                     <button type="submit" className="submit-btn">

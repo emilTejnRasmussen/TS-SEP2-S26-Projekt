@@ -1,4 +1,6 @@
 .desktop-menu-wrapper {
+    display: flex;
+    flex-direction: column;
     width: 5rem;
     height: 100vh;
     background-color: var(--bg);
