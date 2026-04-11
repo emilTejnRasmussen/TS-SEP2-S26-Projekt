@@ -49,6 +49,7 @@ function App() {
                         openLoginModal={openInLoginMode}
                         openRegisterModal={openInRegisterMode}
                         isLoggedIn={isLoggedIn}
+                        checkLoginStatus={checkLoginStatus}
                     />
                 )}
             </div>

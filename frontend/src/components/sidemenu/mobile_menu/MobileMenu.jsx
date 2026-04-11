@@ -31,7 +31,11 @@ export function MobileMenu({openLoginModal, openRegisterModal, isLoggedIn, check
             }
 
             {isOpen && isLoggedIn &&
-                <LogoutButton onLogout={checkLoginStatus}/>
+                <LogoutButton
+                    onLogout={checkLoginStatus}
+                    isOpen={true}
+                    isDesktop={false}
+                />
             }
         </div>
     )

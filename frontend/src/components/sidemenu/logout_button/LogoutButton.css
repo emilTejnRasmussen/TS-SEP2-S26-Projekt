@@ -1,6 +1,32 @@
 .button-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
+}
+
+.vertical-span {
+    margin-top: auto;
+}
+
+.logout-button {
+    width: 80%;
+    border-radius: 12px;
+    padding: 1rem 0;
+    margin: 1rem;
+    background-color: var(--logout-btn);
+
+    font-size: 1.2rem;
+}
+
+.logout-button:hover{
+    background-color: var(--logout-btn-hover);
+}
+
+.collapsed {
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
 }
