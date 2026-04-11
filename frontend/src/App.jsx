@@ -48,6 +48,7 @@ function App() {
                     <DesktopMenu
                         openLoginModal={openInLoginMode}
                         openRegisterModal={openInRegisterMode}
+                        isLoggedIn={isLoggedIn}
                     />
                 )}
             </div>
