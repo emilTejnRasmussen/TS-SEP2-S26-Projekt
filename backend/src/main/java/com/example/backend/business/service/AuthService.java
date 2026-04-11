@@ -6,8 +6,8 @@ import com.example.backend.business.dto.mapper.UserMapper;
 import com.example.backend.business.dto.user.UserResponse;
 import com.example.backend.entity.User;
 import com.example.backend.persistence.repository.UserRepository;
-import com.example.backend.shared.exception.ResourceNotFoundException;
-import jakarta.validation.Valid;
+import com.example.backend.shared.exception.InvalidCredentialsException;
+import com.example.backend.shared.util.PasswordHasher;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,11 +15,13 @@ public class AuthService
 {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordHasher passwordHasher;
 
-    public AuthService(UserRepository userRepository, UserMapper userMapper)
+    public AuthService(UserRepository userRepository, UserMapper userMapper, PasswordHasher passwordHasher)
     {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.passwordHasher = passwordHasher;
     }
 
     public UserResponse registerUser(RegisterUserRequest request)
@@ -27,18 +29,24 @@ public class AuthService
         User newUser = new User();
         newUser.setUsername(request.username());
         newUser.setEmail(request.email());
-        newUser.setHashedPassword("hashed " + request.password());
+
+        String hashedPassword = passwordHasher.hash(request.password());
+        newUser.setHashedPassword(hashedPassword);
 
         User registeredUser = userRepository.save(newUser);
 
         return userMapper.toResponse(registeredUser);
     }
 
-    public UserResponse login(@Valid LoginRequest request)
+    public UserResponse login(LoginRequest request)
     {
-        String hashedPassword = "hashed " + request.password();
-        User user = userRepository.findByUsernameAndHashedPassword(request.username(), hashedPassword)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User user = userRepository.findByUsername(request.username())
+                .orElseThrow(InvalidCredentialsException::new);
+
+        if (!passwordHasher.matches(request.password(), user.getHashedPassword()))
+        {
+            throw new InvalidCredentialsException();
+        }
 
         return userMapper.toResponse(user);
     }

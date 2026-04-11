@@ -3,7 +3,6 @@ package com.example.backend.shared.exception;
 import com.example.backend.business.dto.error.ErrorResponse;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,6 +19,13 @@ public class GlobalExceptionHandler
     {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ErrorResponse("NOT_FOUND", exception.getMessage(), 404));
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidCredentials(InvalidCredentialsException exception)
+    {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new ErrorResponse("UNAUTHORIZED", exception.getMessage(), 401));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
