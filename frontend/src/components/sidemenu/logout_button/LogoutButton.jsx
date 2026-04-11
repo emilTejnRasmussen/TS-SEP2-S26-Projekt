@@ -4,7 +4,7 @@ import { FaPersonWalking } from "react-icons/fa6";
 export function LogoutButton({onLogout, isDesktop, isOpen}) {
 
     const handleLogout = () => {
-        localStorage.removeItem("userId")
+        localStorage.removeItem("userDetails")
         onLogout()
     }
 

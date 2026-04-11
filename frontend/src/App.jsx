@@ -10,11 +10,11 @@ function App() {
     const [showPopup, setShowPopup] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
-        return !!localStorage.getItem("userId")
+        return !!localStorage.getItem("userDetails")
     })
 
     const checkLoginStatus = () => {
-        setIsLoggedIn(!!localStorage.getItem("userId"))
+        setIsLoggedIn(!!localStorage.getItem("userDetails"))
     }
 
     useEffect(() => {
